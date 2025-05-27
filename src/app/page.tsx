@@ -323,7 +323,7 @@ export default function Home() {
             </div>
             <div className="relative h-[400px] group">
               <Image
-                src="/images/67A888B1-11E0-436A-850E-B4004980C0A9_1_105_c.jpeg"
+                src="/images/Maypole_08.jpeg"
                 alt="Maypole Piece"
                 fill
                 className="object-cover rounded-2xl shadow-2xl transform group-hover:scale-105 transition-all duration-500"
