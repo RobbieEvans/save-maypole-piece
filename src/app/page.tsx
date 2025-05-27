@@ -126,7 +126,7 @@ export default function Home() {
               The Friends of The Maypole is a newly formed community group working urgently to secure and protect Maypole Piece – a historic and much-loved green space in Wribbenhall, Bewdley – which has just been listed for sale.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
-              This land has been at the heart of the community for generations, providing a sanctuary for local wildlife and a peaceful, natural space for residents to enjoy. So many people have wonderful stories of this space – from the bonfire celebrating the end of WWII, to Major Webb riding his horse and cart down to church on a Sunday, to fetes and football matches being held on the top of the hill. As such, we believe it should remain in the hands of the community, not private developers.
+              This land has been at the heart of the community for generations, providing a sanctuary for local wildlife and a peaceful, natural space for residents to enjoy. So many people have wonderful stories of this space – from the bonfire celebrating the end of WWII, to Major Webb riding his horse church on a Sunday, to fetes and football matches being held on the top of the hill. As such, we believe it should remain in the hands of the community, not private developers.
             </p>
           </div>
           <div className="relative h-[500px] group">
