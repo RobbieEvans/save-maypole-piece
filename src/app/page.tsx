@@ -410,7 +410,7 @@ export default function Home() {
             <div>
               <h3 className="text-xl font-bold mb-4">Contact</h3>
               <p className="text-gray-400">
-                Email: friendsofthemaypole@gmail.com<br />
+                Email: admin@friendsofthemaypole.co.uk<br />
                 Facebook: @Friends of the Maypole
               </p>
             </div>
