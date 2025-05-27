@@ -14,7 +14,6 @@ export default function Gallery() {
     "/images/Maypole_09.jpeg",
     "/images/Maypole_10.jpeg",
     "/images/Maypole_11.jpeg",
-    "/images/Maypole_12.jpeg",
     "/images/Maypole_13.jpeg",
     "/images/Maypole_14.jpeg",
     "/images/Maypole_15.jpeg",
