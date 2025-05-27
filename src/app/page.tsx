@@ -131,7 +131,7 @@ export default function Home() {
           </div>
           <div className="relative h-[500px] group">
             <Image
-              src="/images/819892CE-1FD4-42CD-B347-456D369AE939_1_105_c.jpeg"
+              src="/images/Maypole_01.jpeg"
               alt="Maypole Piece"
               fill
               className="object-cover rounded-2xl shadow-2xl transform group-hover:scale-105 transition-all duration-500"
@@ -146,7 +146,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">Our Mission</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our aim is to purchase Maypole Piece and place it into charitable trust ownership, preserving it forever for public benefit. But we can't do this alone.
+              Our aim is to purchase Maypole Piece and place it into charitable trust ownership, preserving it forever for public benefit. But we can&apos;t do this alone.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -159,7 +159,7 @@ export default function Home() {
             <div className="bg-white p-8 rounded-2xl shadow-lg">
               <h3 className="text-2xl font-bold mb-4">Expertise</h3>
               <p className="text-gray-600">
-                Are you experienced in land purchase, legal processes, fundraising or setting up charities? We'd love to hear from you.
+                Are you experienced in land purchase, legal processes, fundraising or setting up charities? We&apos;d love to hear from you.
               </p>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-lg">
@@ -304,7 +304,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">Get Involved</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We're working to set up a bank account and fundraising platform – updates will follow shortly. In the meantime, please connect with us, share our mission, and stand with us to protect this vital piece of Bewdley's heritage.
+              We&apos;re working to set up a bank account and fundraising platform – updates will follow shortly. In the meantime, please connect with us, share our mission, and stand with us to protect this vital piece of Bewdley&apos;s heritage.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-16 items-center">
