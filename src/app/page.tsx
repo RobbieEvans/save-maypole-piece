@@ -312,8 +312,8 @@ export default function Home() {
             <div className="space-y-6">
               <h2 className="text-4xl font-bold mb-4 text-gray-900">Contact Us</h3>
               <p className="text-lg text-gray-600">
-  Email: <a href="mailto:admin@friendsofthemaypole.co.uk" className="text-blue-600 hover:underline">
-    admin@friendsofthemaypole.co.uk
+                Email: <a href="mailto:admin@friendsofthemaypole.co.uk" className="text-blue-600 hover:underline">
+                admin@friendsofthemaypole.co.uk
   </a><br />
   Facebook: @Friends of the Maypole
 </p>
