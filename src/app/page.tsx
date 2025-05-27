@@ -353,7 +353,7 @@ export default function Home() {
           </div>
           <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-lg">
             <Image
-              src="/images/Maypole_12.jpeg"
+              src="/images/Maypole_11.jpeg"
               alt="Maypole Piece Nature"
               fill
               className="object-cover"
