@@ -272,11 +272,12 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              "/images/3AB1B980-BD2F-438B-8A73-8A98DE04FCC8_1_105_c.jpeg",
+    
+              "/images/Maypole_04.jpeg",
               "/images/9129F472-014A-4D7A-B0B0-4F86F3B89064_1_105_c.jpeg",
               "/images/0021B6D6-0B05-445B-A6CA-9880A749DF16_1_105_c.jpeg",
               "/images/14C82EA3-1252-4BA6-B5A5-BD3003297A34_1_105_c.jpeg",
-              "/images/9B3643C1-071D-44E6-A2A9-5D0710856C6B_1_105_c.jpeg",
+              "/images/Maypole_04.jpeg",
               "/images/7533814E-B220-424A-AAFC-1C6348C90796_1_105_c.jpeg",
             ].map((src, index) => (
               <div key={index} className="group relative h-[400px] overflow-hidden rounded-2xl">
