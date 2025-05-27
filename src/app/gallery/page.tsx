@@ -26,7 +26,6 @@ export default function Gallery() {
     "/images/Maypole_22.jpeg",
     "/images/Maypole_23.jpeg",
     "/images/Maypole_24.jpeg",
-    "/images/Maypole_25.jpeg",
     "/images/Panorama.jpeg",
     // Old Images
     "/images/Old_Images/B_W_01.jpeg",
