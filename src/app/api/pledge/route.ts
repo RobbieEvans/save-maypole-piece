@@ -71,11 +71,6 @@ export async function POST(request: Request) {
       to: 'revans@axonic.co.uk', // list of receivers
       subject: 'New Pledge Received from Friends of the Maypole Website', // Subject line
       html: adminEmailHtml, // html body
-      attachments: [{
-        filename: 'maypole_logo.jpeg',
-        path: 'public/images/Logo/maypole-logo.jpeg',
-        cid: 'maypolelogo' //same cid value as in the html img src
-      }]
     };
 
     await transporter.sendMail(adminMailOptions);
@@ -132,11 +127,6 @@ export async function POST(request: Request) {
         to: email, // user's email address
         subject: 'Thank You for Your Pledge to Friends of the Maypole Piece', // Subject line
         html: userEmailHtml, // html body
-         attachments: [{
-          filename: 'maypole_logo.jpeg',
-          path: 'public/images/Logo/maypole-logo.jpeg',
-          cid: 'maypolelogo' //same cid value as in the html img src
-        }]
     };
 
     await transporter.sendMail(userMailOptions);
