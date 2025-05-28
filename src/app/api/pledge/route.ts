@@ -86,6 +86,7 @@ export async function POST(request: Request) {
       attachments: [{
         filename: 'MaypoleNewLogo.jpeg',
         content: logoBuffer, // Attach image buffer instead of path
+        contentType: 'image/jpeg', // Specify content type
         cid: 'maypolelogo' //same cid value as in the html img src
       }]
     };
@@ -147,6 +148,7 @@ export async function POST(request: Request) {
         attachments: [{
           filename: 'MaypoleNewLogo.jpeg',
           content: logoBuffer, // Attach image buffer instead of path
+          contentType: 'image/jpeg', // Specify content type
           cid: 'maypolelogo' //same cid value as in the html img src
         }]
     };
