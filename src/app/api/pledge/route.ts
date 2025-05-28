@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import path from 'path';
+import process from 'process';
 
 export async function POST(request: Request) {
   try {
@@ -80,7 +82,7 @@ export async function POST(request: Request) {
       html: adminEmailHtml, // html body
       attachments: [{
         filename: 'MaypoleNewLogo.jpeg',
-        path: 'public/images/Logo/MaypoleNewLogo.jpeg',
+        path: path.join(process.cwd(), 'public', 'images', 'Logo', 'MaypoleNewLogo.jpeg'),
         cid: 'maypolelogo' //same cid value as in the html img src
       }]
     };
@@ -141,7 +143,7 @@ export async function POST(request: Request) {
         html: userEmailHtml, // html body
         attachments: [{
           filename: 'MaypoleNewLogo.jpeg',
-          path: 'public/images/Logo/MaypoleNewLogo.jpeg',
+          path: path.join(process.cwd(), 'public', 'images', 'Logo', 'MaypoleNewLogo.jpeg'),
           cid: 'maypolelogo' //same cid value as in the html img src
         }]
     };
