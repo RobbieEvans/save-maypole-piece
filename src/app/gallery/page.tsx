@@ -68,7 +68,7 @@ export default function Gallery() {
       </nav>
 
       {/* Gallery Content */}
-      <div className="pt-24 pb-12">
+      <div className="pt-32 pb-12">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold mb-4 text-gray-900">Maypole Piece Gallery</h1>

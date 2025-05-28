@@ -13,12 +13,12 @@ export async function POST(request: Request) {
 
     // Create a Nodemailer transporter using your email service details
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_SERVER_HOST,
-      port: parseInt(process.env.EMAIL_SERVER_PORT || '587', 10),
-      secure: process.env.EMAIL_SERVER_SECURE === 'true', // true for 465, false for other ports
+      host: 'smtp.ionos.co.uk',
+      port: 587,
+      secure: false,
       auth: {
-        user: process.env.EMAIL_SERVER_USER, // generated ethereal user
-        pass: process.env.EMAIL_SERVER_PASSWORD, // generated ethereal password
+        user: process.env.EMAIL_SERVER_USER,
+        pass: process.env.EMAIL_SERVER_PASSWORD,
       },
     });
 
@@ -27,74 +27,116 @@ export async function POST(request: Request) {
     const timestamp = now.toLocaleString('en-GB', { timeZone: 'Europe/London' });
 
     // Construct the email content for revans@axonic.co.uk
-    let adminEmailContent = `
-Timestamp: ${timestamp}
-Name: ${firstName} ${lastName}
-Email: ${email}
-`;
-
-    if (phoneNumber) {
-        adminEmailContent += `Phone Number: ${phoneNumber}\n`; // Include phone number if provided
-    }
-
-    adminEmailContent += `Pledge Type: ${pledgeType}\n`;
-
-    if (pledgeType === 'money') {
-      adminEmailContent += `Pledge Amount: £${pledgeAmount}\n`;
-    } else if (pledgeType === 'services') {
-      adminEmailContent += `Service Details: ${serviceDetails}\n`;
-    }
-
-    if (message) {
-      adminEmailContent += `Message: ${message}\n`;
-    }
+    const adminEmailHtml = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>New Pledge Received</title>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+          .header { text-align: center; margin-bottom: 20px; }
+          .header img { max-width: 100px; height: auto; }
+          .content { margin-bottom: 20px; }
+          .footer { text-align: center; color: #777; font-size: 0.9em; margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <img src="cid:maypolelogo" alt="Friends of the Maypole Logo">
+            <h2>New Pledge Received</h2>
+          </div>
+          <div class="content">
+            <p><strong>Timestamp:</strong> ${timestamp}</p>
+            <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            ${phoneNumber ? `<p><strong>Phone Number:</strong> ${phoneNumber}</p>` : ''}
+            <p><strong>Pledge Type:</strong> ${pledgeType}</p>
+            ${pledgeType === 'money' ? `<p><strong>Pledge Amount:</strong> £${pledgeAmount}</p>` : ''}
+            ${pledgeType === 'services' ? `<p><strong>Service Details:</strong> ${serviceDetails}</p>` : ''}
+            ${message ? `<p><strong>Message:</strong> ${message}</p>` : ''}
+          </div>
+          <div class="footer">
+            <p>This is an automated email, please do not reply directly.</p>
+          </div>
+        </div>
+      </body>
+      </html>
+    `;
 
     // Send email to revans@axonic.co.uk
     const adminMailOptions = {
       from: process.env.EMAIL_FROM, // sender address
       to: 'revans@axonic.co.uk', // list of receivers
       subject: 'New Pledge Received from Friends of the Maypole Website', // Subject line
-      text: adminEmailContent, // plain text body
+      html: adminEmailHtml, // html body
+      attachments: [{
+        filename: 'maypole_logo.jpeg',
+        path: './public/images/Logo/F9954568-66C9-40B8-B222-A4731D67A6DC_1_105_c.jpeg',
+        cid: 'maypolelogo' //same cid value as in the html img src
+      }]
     };
 
     await transporter.sendMail(adminMailOptions);
 
     // Construct the confirmation email content for the user
-    let userEmailContent = `
-Dear ${firstName},
-
-Thank you for your pledge to help save Maypole Piece!
-
-Below are the details of your pledge:
-
-`;
-
-    userEmailContent += `Name: ${firstName} ${lastName}\n`;
-    userEmailContent += `Email: ${email}\n`;
-    if (phoneNumber) {
-        userEmailContent += `Phone Number: ${phoneNumber}\n`;
-    }
-    userEmailContent += `Pledge Type: ${pledgeType}\n`;
-    if (pledgeType === 'money') {
-        userEmailContent += `Pledge Amount: £${pledgeAmount}\n`;
-    } else if (pledgeType === 'services') {
-        userEmailContent += `Service Details: ${serviceDetails}\n`;
-    }
-    if (message) {
-        userEmailContent += `Message: ${message}\n`;
-    }
-
-    userEmailContent += `\nTimestamp: ${timestamp}\n`; // Add timestamp to user email as well
-
-    userEmailContent += `\nYour support is greatly appreciated. The Friends Of The Maypole Piece team will be in touch shortly.\n\nBest regards,\nFriends Of The Maypole Piece
-`;
+    const userEmailHtml = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Thank You for Your Pledge</title>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+          .header { text-align: center; margin-bottom: 20px; }
+          .header img { max-width: 100px; height: auto; }
+          .content { margin-bottom: 20px; }
+          .footer { text-align: center; color: #777; font-size: 0.9em; margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <img src="cid:maypolelogo" alt="Friends of the Maypole Logo">
+            <h2>Thank You for Your Pledge!</h2>
+          </div>
+          <div class="content">
+            <p>Dear ${firstName},</p>
+            <p>Thank you for your pledge to help save Maypole Piece!</p>
+            <p>Below are the details of your pledge:</p>
+            <ul>
+              <li><strong>Name:</strong> ${firstName} ${lastName}</li>
+              <li><strong>Email:</strong> ${email}</li>
+              ${phoneNumber ? `<li><strong>Phone Number:</strong> ${phoneNumber}</li>` : ''}
+              <li><strong>Pledge Type:</strong> ${pledgeType}</li>
+              ${pledgeType === 'money' ? `<li><strong>Pledge Amount:</strong> £${pledgeAmount}</li>` : ''}
+              ${pledgeType === 'services' ? `<li><strong>Service Details:</strong> ${serviceDetails}</li>` : ''}
+              ${message ? `<li><strong>Message:</strong> ${message}</li>` : ''}
+            </ul>
+            <p>Your support is greatly appreciated. The Friends Of The Maypole Piece team will be in touch shortly.</p>
+            <p>Timestamp: ${timestamp}</p>
+          </div>
+          <div class="footer">
+            <p>Best regards,<br>Friends Of The Maypole Piece</p>
+            <p>This is an automated email, please do not reply directly.</p>
+          </div>
+        </div>
+      </body>
+      </html>
+    `;
 
     // Send confirmation email to the user
     const userMailOptions = {
         from: process.env.EMAIL_FROM, // sender address
         to: email, // user's email address
         subject: 'Thank You for Your Pledge to Friends of the Maypole Piece', // Subject line
-        text: userEmailContent, // plain text body
+        html: userEmailHtml, // html body
+         attachments: [{
+          filename: 'maypole_logo.jpeg',
+          path: './public/images/Logo/F9954568-66C9-40B8-B222-A4731D67A6DC_1_105_c.jpeg',
+          cid: 'maypolelogo' //same cid value as in the html img src
+        }]
     };
 
     await transporter.sendMail(userMailOptions);

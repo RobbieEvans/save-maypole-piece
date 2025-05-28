@@ -52,3 +52,6 @@ next-env.d.ts
 .yarn/releases
 .yarn/sdks
 .yarn/versions
+
+EMAIL_USER=friendsofthemaypole@gmail.com
+EMAIL_APP_PASSWORD=your-app-specific-password

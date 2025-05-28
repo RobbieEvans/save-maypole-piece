@@ -2,11 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   const [pledgeType, setPledgeType] = useState('money');
   const [submissionStatus, setSubmissionStatus] = useState<'success' | 'error' | null>(null); // 'success', 'error', or null
+
+  // Effect to read URL parameter on mount and set initial pledge type
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get('type');
+    if (type === 'services') {
+      setPledgeType('services');
+    }
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   const handlePledgeTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPledgeType(event.target.value);
@@ -92,6 +101,7 @@ export default function Home() {
           </div>
         </div>
       </nav>
+     
 
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full overflow-hidden">
@@ -126,7 +136,7 @@ export default function Home() {
               The Friends of The Maypole is a newly formed community group working urgently to secure and protect Maypole Piece – a historic and much-loved green space in Wribbenhall, Bewdley – which has just been listed for sale.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
-              This land has been at the heart of the community for generations, providing a sanctuary for local wildlife and a peaceful, natural space for residents to enjoy. So many people have wonderful stories of this space – from the bonfire celebrating the end of WWII, to Major Webb riding his horse church on a Sunday, to fetes and football matches being held on the top of the hill. As such, we believe it should remain in the hands of the community, not private developers.
+              This land has been at the heart of the community for generations, providing a sanctuary for local wildlife and a peaceful, natural space for residents to enjoy. So many people have wonderful stories of this space – from the bonfire celebrating the end of WWII, to Major Webb riding his horse to church on a Sunday, to fetes and football matches being held on the top of the hill. As such, we believe it should remain in the hands of the community, not private developers.
             </p>
           </div>
           <div className="relative h-[500px] group">
@@ -310,7 +320,7 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900">Contact Us</h3>
+              <h2 className="text-4xl font-bold mb-4 text-gray-900">Contact Us</h2>
               <p className="text-lg text-gray-600">
                 Email: <a href="mailto:admin@friendsofthemaypole.co.uk" className="text-blue-600 hover:underline">
                 admin@friendsofthemaypole.co.uk
@@ -318,9 +328,12 @@ export default function Home() {
                   Facebook: @Friends of the Maypole
                   </p>
               <div className="pt-4">
-                <button className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
-                  Join Our Community
-                </button>
+                <a
+                  href="#pledge-form-section" 
+                  className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 inline-block">
+                
+                  Why not get involved?
+                </a>
               </div>
             </div>
             <div className="relative h-[400px] group">
@@ -412,7 +425,9 @@ export default function Home() {
             <div>
               <h3 className="text-xl font-bold mb-4">Contact</h3>
               <p className="text-gray-400">
-                Email: admin@friendsofthemaypole.co.uk<br />
+                Email: <a href="mailto:admin@friendsofthemaypole.co.uk" className="text-blue-600 hover:underline">
+                admin@friendsofthemaypole.co.uk
+                </a><br />
                 Facebook: @Friends of the Maypole
               </p>
             </div>
