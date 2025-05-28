@@ -20,14 +20,23 @@ export async function POST(request: Request) {
     console.log('EMAIL_FROM:', process.env.EMAIL_FROM); // Note: Avoid logging the password directly for security
 
     const transporter = nodemailer.createTransport({
-      host: 'smtp.ionos.co.uk',
-      port: 587,
-      secure: false,
+      host: process.env.EMAIL_SERVER_HOST,
+      port: Number(process.env.EMAIL_SERVER_PORT),
+      secure: process.env.EMAIL_SERVER_SECURE === 'true',
       auth: {
         user: process.env.EMAIL_SERVER_USER,
         pass: process.env.EMAIL_SERVER_PASSWORD,
       },
     });
+
+    // Verify transporter configuration
+    try {
+      await transporter.verify();
+      console.log('SMTP connection verified successfully');
+    } catch (verifyError) {
+      console.error('SMTP connection verification failed:', verifyError);
+      throw verifyError;
+    }
 
     // Get current timestamp and format it in British style
     const now = new Date();
@@ -135,9 +144,17 @@ export async function POST(request: Request) {
     await transporter.sendMail(userMailOptions);
 
     return NextResponse.json({ message: 'Pledge received successfully and confirmation email sent!' }, { status: 200 });
-  } catch (error) {
-    console.error('Error sending pledge email:', error); // Log the full error object
-    // You can add more specific error handling or logging here if needed
-    return NextResponse.json({ message: 'Failed to send pledge.', error: error }, { status: 500 });
+  } catch (error: any) {
+    console.error('Error sending pledge email:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      stack: error.stack
+    });
+    return NextResponse.json({ 
+      message: 'Failed to send pledge.', 
+      error: error.message,
+      code: error.code 
+    }, { status: 500 });
   }
 } 
