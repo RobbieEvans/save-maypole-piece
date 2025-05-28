@@ -30,6 +30,11 @@ export async function POST(request: Request) {
       },
     });
 
+    // Fetch the logo image data
+    const logoResponse = await fetch('https://' + request.headers.get('host') + '/images/Logo/MaypoleNewLogo.jpeg');
+    const logoArrayBuffer = await logoResponse.arrayBuffer();
+    const logoBuffer = Buffer.from(logoArrayBuffer);
+
     // Get current timestamp and format it in British style
     const now = new Date();
     const timestamp = now.toLocaleString('en-GB', { timeZone: 'Europe/London' });
@@ -81,7 +86,7 @@ export async function POST(request: Request) {
       html: adminEmailHtml, // html body
       attachments: [{
         filename: 'MaypoleNewLogo.jpeg',
-        path: path.resolve(__dirname, '..', '..', '..', 'public', 'images', 'Logo', 'MaypoleNewLogo.jpeg'),
+        content: logoBuffer, // Attach image buffer instead of path
         cid: 'maypolelogo' //same cid value as in the html img src
       }]
     };
@@ -142,7 +147,7 @@ export async function POST(request: Request) {
         html: userEmailHtml, // html body
         attachments: [{
           filename: 'MaypoleNewLogo.jpeg',
-          path: path.resolve(__dirname, '..', '..', '..', 'public', 'images', 'Logo', 'MaypoleNewLogo.jpeg'),
+          content: logoBuffer, // Attach image buffer instead of path
           cid: 'maypolelogo' //same cid value as in the html img src
         }]
     };
