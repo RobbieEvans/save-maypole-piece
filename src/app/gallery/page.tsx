@@ -41,8 +41,8 @@ export default function Gallery() {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="text-xl font-bold text-gray-900 flex items-center">
-              <Image
-                src="/images/Logo/F9954568-66C9-40B8-B222-A4731D67A6DC_1_105_c.jpeg"
+            <Image
+                src="/images/Logo/MaypoleNewLogo.jpeg"
                 alt="Friends of the Maypole Logo"
                 width={120}
                 height={120}
