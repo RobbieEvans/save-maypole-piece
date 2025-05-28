@@ -144,7 +144,7 @@ export async function POST(request: Request) {
     await transporter.sendMail(userMailOptions);
 
     return NextResponse.json({ message: 'Pledge received successfully and confirmation email sent!' }, { status: 200 });
-  } catch (error: any) {
+  } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
     console.error('Error sending pledge email:', error);
     console.error('Error details:', {
       message: error.message,
