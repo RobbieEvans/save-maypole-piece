@@ -310,7 +310,7 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
-              <h2 className="text-4xl font-bold mb-4 text-gray-900">Contact Us</h3>
+              <h2 className="text-4xl font-bold mb-4 text-gray-900">Contact Us</h2>
               <p className="text-lg text-gray-600">
                 Email: <a href="mailto:admin@friendsofthemaypole.co.uk" className="text-blue-600 hover:underline">
                 admin@friendsofthemaypole.co.uk
