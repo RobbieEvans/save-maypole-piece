@@ -12,6 +12,13 @@ export async function POST(request: Request) {
     }
 
     // Create a Nodemailer transporter using your email service details
+    console.log('Email environment variables:');
+    console.log('EMAIL_SERVER_HOST:', process.env.EMAIL_SERVER_HOST);
+    console.log('EMAIL_SERVER_PORT:', process.env.EMAIL_SERVER_PORT);
+    console.log('EMAIL_SERVER_SECURE:', process.env.EMAIL_SERVER_SECURE);
+    console.log('EMAIL_SERVER_USER:', process.env.EMAIL_SERVER_USER);
+    console.log('EMAIL_FROM:', process.env.EMAIL_FROM); // Note: Avoid logging the password directly for security
+
     const transporter = nodemailer.createTransport({
       host: 'smtp.ionos.co.uk',
       port: 587,
@@ -36,7 +43,7 @@ export async function POST(request: Request) {
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
           .header { text-align: center; margin-bottom: 20px; }
-          .header img { max-width: 100px; height: auto; }
+          .header img { max-width: 30px; height: auto; }
           .content { margin-bottom: 20px; }
           .footer { text-align: center; color: #777; font-size: 0.9em; margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
         </style>
@@ -44,6 +51,7 @@ export async function POST(request: Request) {
       <body>
         <div class="container">
           <div class="header">
+            <img src="cid:maypolelogo" alt="Friends of the Maypole Logo" style="display: block; margin: 0 auto;" width="30" height="auto">
             <h2>New Pledge Received</h2>
           </div>
           <div class="content">
@@ -71,8 +79,8 @@ export async function POST(request: Request) {
       subject: 'New Pledge Received from Friends of the Maypole Website', // Subject line
       html: adminEmailHtml, // html body
       attachments: [{
-        filename: 'LogoMaple.jpeg',
-        path: 'public/images/Logo/LogoMaple.jpeg',
+        filename: 'maypole-logo.jpeg',
+        path: 'public/images/Logo/maypole-logo.jpeg',
         cid: 'maypolelogo' //same cid value as in the html img src
       }]
     };
@@ -89,7 +97,7 @@ export async function POST(request: Request) {
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
           .header { text-align: center; margin-bottom: 20px; }
-          .header img { max-width: 100px; height: auto; }
+          .header img { max-width: 30px; height: auto; }
           .content { margin-bottom: 20px; }
           .footer { text-align: center; color: #777; font-size: 0.9em; margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
         </style>
@@ -97,6 +105,7 @@ export async function POST(request: Request) {
       <body>
         <div class="container">
           <div class="header">
+            <img src="cid:maypolelogo" alt="Friends of the Maypole Logo" style="display: block; margin: 0 auto;" width="30" height="auto">
             <h2>Thank You for Your Pledge!</h2>
           </div>
           <div class="content">
@@ -131,8 +140,8 @@ export async function POST(request: Request) {
         subject: 'Thank You for Your Pledge to Friends of the Maypole Piece', // Subject line
         html: userEmailHtml, // html body
         attachments: [{
-          filename: 'LogoMaple.jpeg',
-          path: 'public/images/Logo/LogoMaple.jpeg',
+          filename: 'maypole-logo.jpeg',
+          path: 'public/images/Logo/maypole-logo.jpeg',
           cid: 'maypolelogo' //same cid value as in the html img src
         }]
     };
@@ -141,7 +150,8 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ message: 'Pledge received successfully and confirmation email sent!' }, { status: 200 });
   } catch (error) {
-    console.error('Error sending pledge email:', error);
+    console.error('Error sending pledge email:', error); // Log the full error object
+    // You can add more specific error handling or logging here if needed
     return NextResponse.json({ message: 'Failed to send pledge.', error: error }, { status: 500 });
   }
 } 

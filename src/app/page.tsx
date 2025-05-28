@@ -210,21 +210,21 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-gray-900 font-bold mb-2">First Name</label>
-                <input type="text" name="firstName" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black placeholder-gray-700" required />
+                <input type="text" name="firstName" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black placeholder-gray-700" required /> {/* Made First Name mandatory */}
               </div>
               <div>
                 <label className="block text-gray-900 font-bold mb-2">Last Name</label>
-                <input type="text" name="lastName" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black placeholder-gray-700" required />
+                <input type="text" name="lastName" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black placeholder-gray-700" required /> {/* Made Last Name mandatory */}
               </div>
             </div>
             <div>
               <label className="block text-gray-900 font-bold mb-2">Email</label>
-              <input type="email" name="email" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black placeholder-gray-700" required />
+              <input type="email" name="email" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black placeholder-gray-700" required /> {/* Made Email mandatory */}
             </div>
 
             <div>
                 <label className="block text-gray-900 font-bold mb-2">Phone Number (Optional)</label>
-                <input type="tel" name="phoneNumber" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black placeholder-gray-700" />
+                <input type="number" name="phoneNumber" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black placeholder-gray-700" />
               </div>
 
             {/* Conditional input based on pledgeType */}
@@ -233,7 +233,7 @@ export default function Home() {
                 <label className="block text-gray-900 font-bold mb-2">Pledge Amount (£)</label>
                 <div className="flex items-center">
                   <span className="text-gray-700 text-lg mr-2">£</span>
-                  <input type="number" name="pledgeAmount" min="1" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black placeholder-gray-700" required />
+                  <input type="number" name="pledgeAmount" min="0" step="any" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black placeholder-gray-700" required />
                 </div>
               </div>
             )}
@@ -322,8 +322,8 @@ export default function Home() {
             <div className="space-y-6">
               <h2 className="text-4xl font-bold mb-4 text-gray-900">Contact Us</h2>
               <p className="text-lg text-gray-600">
-                Email: <a href="mailto:admin@friendsofthemaypole.co.uk" className="text-blue-600 hover:underline">
-                admin@friendsofthemaypole.co.uk
+                Email: <a href="mailto:info@friendsofthemapol.co.uk" className="text-blue-600 hover:underline">
+                info@friendsofthemapol.co.uk
                 </a><br />
                   Facebook: @Friends of the Maypole
                   </p>
@@ -425,8 +425,8 @@ export default function Home() {
             <div>
               <h3 className="text-xl font-bold mb-4">Contact</h3>
               <p className="text-gray-400">
-                Email: <a href="mailto:admin@friendsofthemaypole.co.uk" className="text-blue-600 hover:underline">
-                admin@friendsofthemaypole.co.uk
+                Email: <a href="mailto:info@friendsofthemapol.co.uk" className="text-blue-600 hover:underline">
+                info@friendsofthemapol.co.uk
                 </a><br />
                 Facebook: @Friends of the Maypole
               </p>
