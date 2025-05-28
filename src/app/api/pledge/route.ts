@@ -44,7 +44,6 @@ export async function POST(request: Request) {
       <body>
         <div class="container">
           <div class="header">
-            <img src="cid:maypolelogo" alt="Friends of the Maypole Logo">
             <h2>New Pledge Received</h2>
           </div>
           <div class="content">
@@ -98,7 +97,6 @@ export async function POST(request: Request) {
       <body>
         <div class="container">
           <div class="header">
-            <img src="cid:maypolelogo" alt="Friends of the Maypole Logo">
             <h2>Thank You for Your Pledge!</h2>
           </div>
           <div class="content">
