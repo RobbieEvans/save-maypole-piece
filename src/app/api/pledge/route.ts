@@ -29,6 +29,11 @@ export async function POST(request: Request) {
       },
     });
 
+    // Fetch the logo image data
+    const logoResponse = await fetch('https://' + request.headers.get('host') + '/images/Logo/MaypoleNewLogo.jpeg');
+    const logoArrayBuffer = await logoResponse.arrayBuffer(); // Use arrayBuffer instead of buffer
+    const logoBuffer = Buffer.from(logoArrayBuffer); // Convert ArrayBuffer to Buffer
+
     // Get current timestamp and format it in British style
     const now = new Date();
     const timestamp = now.toLocaleString('en-GB', { timeZone: 'Europe/London' });
@@ -43,6 +48,7 @@ export async function POST(request: Request) {
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
           .header { text-align: center; margin-bottom: 20px; }
+          .header img { max-width: 30px; height: auto; } /* Set max-width for consistent sizing */
           .content { margin-bottom: 20px; }
           .footer { text-align: center; color: #777; font-size: 0.9em; margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
         </style>
@@ -50,6 +56,7 @@ export async function POST(request: Request) {
       <body>
         <div class="container">
           <div class="header">
+            <img src="cid:maypolelogo" alt="Friends of the Maypole Logo" style="display: block; margin: 0 auto;" width="30" height="auto">
             <h2>New Pledge Received</h2>
           </div>
           <div class="content">
@@ -76,6 +83,11 @@ export async function POST(request: Request) {
       to: 'revans@axonic.co.uk', // list of receivers
       subject: 'New Pledge Received from Friends of the Maypole Website', // Subject line
       html: adminEmailHtml, // html body
+      attachments: [{
+        filename: 'MaypoleNewLogo.jpeg',
+        content: logoBuffer, // Attach image buffer instead of path
+        cid: 'maypolelogo' //same cid value as in the html img src
+      }]
     };
 
     await transporter.sendMail(adminMailOptions);
@@ -90,6 +102,7 @@ export async function POST(request: Request) {
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
           .header { text-align: center; margin-bottom: 20px; }
+          .header img { max-width: 30px; height: auto; } /* Set max-width for consistent sizing */
           .content { margin-bottom: 20px; }
           .footer { text-align: center; color: #777; font-size: 0.9em; margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
         </style>
@@ -97,6 +110,7 @@ export async function POST(request: Request) {
       <body>
         <div class="container">
           <div class="header">
+            <img src="cid:maypolelogo" alt="Friends of the Maypole Logo" style="display: block; margin: 0 auto;" width="30" height="auto">
             <h2>Thank You for Your Pledge!</h2>
           </div>
           <div class="content">
@@ -130,6 +144,11 @@ export async function POST(request: Request) {
         to: email, // user's email address
         subject: 'Thank You for Your Pledge to Friends of the Maypole Piece', // Subject line
         html: userEmailHtml, // html body
+        attachments: [{
+          filename: 'MaypoleNewLogo.jpeg',
+          content: logoBuffer, // Attach image buffer instead of path
+          cid: 'maypolelogo' //same cid value as in the html img src
+        }]
     };
 
     await transporter.sendMail(userMailOptions);
