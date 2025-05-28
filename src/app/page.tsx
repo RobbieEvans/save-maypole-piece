@@ -224,7 +224,7 @@ export default function Home() {
 
             <div>
                 <label className="block text-gray-900 font-bold mb-2">Phone Number (Optional)</label>
-                <input type="number" name="phoneNumber" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black placeholder-gray-700" />
+                <input type="number" name="phoneNumber" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black placeholder-gray-700" /> {/* Changed type to number for numeric input */}
               </div>
 
             {/* Conditional input based on pledgeType */}

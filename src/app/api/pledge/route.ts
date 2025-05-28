@@ -79,8 +79,8 @@ export async function POST(request: Request) {
       subject: 'New Pledge Received from Friends of the Maypole Website', // Subject line
       html: adminEmailHtml, // html body
       attachments: [{
-        filename: 'maypole-logo.jpeg',
-        path: 'public/images/Logo/maypole-logo.jpeg',
+        filename: 'MaypoleNewLogo.jpeg',
+        path: 'public/images/Logo/MaypoleNewLogo.jpeg',
         cid: 'maypolelogo' //same cid value as in the html img src
       }]
     };
@@ -97,7 +97,7 @@ export async function POST(request: Request) {
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
           .header { text-align: center; margin-bottom: 20px; }
-          .header img { max-width: 30px; height: auto; }
+          .header img { max-width: 30px; height: auto; } /* Set max-width for consistent sizing */
           .content { margin-bottom: 20px; }
           .footer { text-align: center; color: #777; font-size: 0.9em; margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
         </style>
@@ -140,8 +140,8 @@ export async function POST(request: Request) {
         subject: 'Thank You for Your Pledge to Friends of the Maypole Piece', // Subject line
         html: userEmailHtml, // html body
         attachments: [{
-          filename: 'maypole-logo.jpeg',
-          path: 'public/images/Logo/maypole-logo.jpeg',
+          filename: 'MaypoleNewLogo.jpeg',
+          path: 'public/images/Logo/MaypoleNewLogo.jpeg',
           cid: 'maypolelogo' //same cid value as in the html img src
         }]
     };
