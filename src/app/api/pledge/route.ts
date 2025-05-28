@@ -73,7 +73,7 @@ export async function POST(request: Request) {
       html: adminEmailHtml, // html body
       attachments: [{
         filename: 'maypole_logo.jpeg',
-        path: '/images/Logo/maypole-logo.jpeg',
+        path: 'public/images/Logo/maypole-logo.jpeg',
         cid: 'maypolelogo' //same cid value as in the html img src
       }]
     };
@@ -134,7 +134,7 @@ export async function POST(request: Request) {
         html: userEmailHtml, // html body
          attachments: [{
           filename: 'maypole_logo.jpeg',
-          path: '/images/Logo/maypole-logo.jpeg',
+          path: 'public/images/Logo/maypole-logo.jpeg',
           cid: 'maypolelogo' //same cid value as in the html img src
         }]
     };
