@@ -73,7 +73,7 @@ export async function POST(request: Request) {
       html: adminEmailHtml, // html body
       attachments: [{
         filename: 'maypole_logo.jpeg',
-        path: './public/images/Logo/F9954568-66C9-40B8-B222-A4731D67A6DC_1_105_c.jpeg',
+        path: process.cwd() + '/public/images/Logo/F9954568-66C9-40B8-B222-A4731D67A6DC_1_105_c.jpeg',
         cid: 'maypolelogo' //same cid value as in the html img src
       }]
     };
@@ -134,7 +134,7 @@ export async function POST(request: Request) {
         html: userEmailHtml, // html body
          attachments: [{
           filename: 'maypole_logo.jpeg',
-          path: './public/images/Logo/F9954568-66C9-40B8-B222-A4731D67A6DC_1_105_c.jpeg',
+          path: process.cwd() + '/public/images/Logo/F9954568-66C9-40B8-B222-A4731D67A6DC_1_105_c.jpeg',
           cid: 'maypolelogo' //same cid value as in the html img src
         }]
     };
